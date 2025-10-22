@@ -1,0 +1,34 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="author" class="org.example.onlinelibrary.Author">
+        <property name="dataNasterii" value="01.01.1980"/>
+        <property name="nationaliteAutor" value="Română"/>
+        <property name="nrCarti" value="5"/>
+        <property name="numeAutor" value="Eminescu"/>
+        <property name="prenumeAutor" value="Mihai"/>
+    </bean>
+
+
+    <bean id="book" class="org.example.onlinelibrary.Book">
+        <property name="nrCarti" value="10"/>
+        <property name="author" ref="author"/>
+        <property name="id" value="1"/>
+        <property name="price" value="29.99"/>
+        <property name="title" value="Luceafărul"/>
+    </bean>
+
+    <bean id="library" class="org.example.onlinelibrary.Library">
+        <property name="nameLibrary" value="Biblioteca Națională"/>
+        <property name="adresa" value="București, România"/>
+        <property name="proprietar" value="Ministerul Culturii"/>
+        <property name="books">
+            <list>
+                <ref bean="book"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>
