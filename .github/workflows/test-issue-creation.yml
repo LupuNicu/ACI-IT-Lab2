@@ -1,0 +1,34 @@
+name: Test Issue Creation
+
+on:
+  workflow_dispatch: # Permite rularea manuală pentru test
+
+jobs:
+  create_test_issue:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Create test issue
+        run: |
+          gh issue create \
+            --title "Test Issue pentru Laboratorul 2 - GitHub Actions" \
+            --body "Acest issue a fost creat automat pentru a testa workflow-ul de adăugare etichete.
+
+          ## Descriere
+          Acest issue servește ca test pentru funcționalitatea de adăugare automată de etichete implementată în cadrul Laboratorului 2.
+
+          ## Etichete așteptate
+          - triage
+          - aci-lab2
+
+          ## Testare
+          După crearea acestui issue, workflow-ul 'Label issues' ar trebui să adauge automat etichetele specificate."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+
+      - name: Verify issue creation
+        run: |
+          echo "✅ Issue de test creat cu succes!"
+          echo "🔍 Verifică în tab-ul 'Issues' din repository pentru a vedea etichetele adăugate automat."
