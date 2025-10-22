@@ -1,0 +1,31 @@
+name: Test Hello World Action
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Permite rularea manuală
+
+jobs:
+  test_action:
+    name: Test Hello World Action
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repository-ul pentru a folosi acțiunea locală
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      # Testează acțiunea cu nume personalizat
+      - name: Test Hello World Action
+        id: hello
+        uses: ./ # Folosește acțiunea din directorul curent
+        with:
+          who-to-greet: 'ACI-IT-Lab2 Student'
+
+      # Afișează output-ul acțiunii
+      - name: Display output
+        run: |
+          echo "Mesajul de salut: Hello ACI-IT-Lab2 Student!"
+          echo "Timpul când te-am salutat: ${{ steps.hello.outputs.time }}"
+          echo "Test completat cu succes! ✅"
