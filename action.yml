@@ -1,0 +1,14 @@
+name: 'Hello World JavaScript Action'
+description: 'A simple JavaScript action that prints Hello World or Hello + name'
+author: 'ACI-IT-Lab2'
+inputs:
+  who-to-greet:
+    description: 'The name of the person to greet'
+    required: true
+    default: 'World'
+outputs:
+  time:
+    description: 'The time we greeted you'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

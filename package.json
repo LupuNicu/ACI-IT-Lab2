@@ -1,0 +1,26 @@
+{
+  "name": "hello-world-javascript-action",
+  "version": "1.1.0",
+  "description": "A simple JavaScript action that prints Hello World or Hello + name",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rollup --config rollup.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "github",
+    "actions",
+    "javascript"
+  ],
+  "author": "ACI-IT-Lab2",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@actions/github": "^6.0.0"
+  },
+  "devDependencies": {
+    "rollup": "^4.9.0",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3"
+  }
+}
