@@ -1,0 +1,20 @@
+apiVersion: actions.github.com/v1alpha1
+kind: RunnerScaleSet
+metadata:
+  name: aci-lab2-runners
+  namespace: actions-runner-system
+spec:
+  githubConfigUrl: https://github.com/OWNER_OR_ORG/ACI-IT-Lab2
+  githubConfigSecret: controller-manager
+  replicas: 1
+  template:
+    spec:
+      labels:
+        - self-hosted
+        - arc
+        - aci-lab2
+      workVolumeClaimTemplate:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi

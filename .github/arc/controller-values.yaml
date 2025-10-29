@@ -1,0 +1,29 @@
+# Exemplu de valori Helm pentru Actions Runner Controller (ARC)
+# Completează placeholder-ele înainte de instalare.
+
+# URL către owner (org sau user) sau repo (scoped). Exemplu org:
+# githubConfigUrl: https://github.com/ORGANIZATIEA_TA
+# Pentru repo: https://github.com/ORGANIZATIEA_TA/REPO
+githubConfigUrl: https://github.com/OWNER_OR_ORG
+
+# Numele secretului care conține credențialele GitHub App (vezi auth.md)
+githubConfigSecret: controller-manager
+
+# Opțional: scope la un repository anume
+# githubConfigSecretRepos:
+#   - ACI-IT-Lab2
+
+# Runner scale set controller
+runnerScaleSet:
+  enabled: true
+
+# Controller settings de bază
+controllerManager:
+  replicas: 1
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
