@@ -1,0 +1,17 @@
+name: "Hello World Docker Action"
+description: "Imprimă un salut și expune timpul ca output"
+author: "ACI-IT-Lab2"
+inputs:
+  who-to-greet:
+    description: "Numele persoanei de salutat"
+    required: true
+    default: "World"
+outputs:
+  time:
+    description: "Timpul la care a rulat acțiunea"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - "${{ inputs.who-to-greet }}"
+

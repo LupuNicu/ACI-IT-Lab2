@@ -1,0 +1,22 @@
+name: Test Docker Action
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Hello world docker action
+        id: hello
+        uses: ./.github/actions/hello-world-docker-action
+        with:
+          who-to-greet: 'Mona the Octocat'
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
+
+
