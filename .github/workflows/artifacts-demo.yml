@@ -1,0 +1,37 @@
+name: Artifacts Demo
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build_and_archive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Generate sample build outputs and coverage
+        shell: bash
+        run: |
+          mkdir -p dist output/test
+          echo "Hello from artifact" > dist/index.html
+          echo "ignore me" > dist/readme.md
+          echo "<html><body>coverage demo</body></html>" > output/test/code-coverage.html
+
+      - name: Archive production artifacts (exclude markdown)
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-without-markdown
+          path: |
+            dist
+            !dist/**/*.md
+
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-coverage-report
+          path: output/test/code-coverage.html
+
+
